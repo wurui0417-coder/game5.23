@@ -13,12 +13,50 @@ void menu()
 }
 
 
+//游戏主体
 void game(int row, int col)
 {
 	printf("welcome to the game!\n");
+
 	char borad[ROW][COL] = { 0 };
 	Iniborad(borad, row, col);
 	Printborad(borad, row, col);
+	for (int times =0;times < ROW * COL; times += 2)
+	{
+		Playertern(borad, row, col);
+		if (Judegame(borad, row, col) == 1)
+		{
+			printf("Player wins!\n");
+			break;
+		}
+		else if (Judegame(borad, row, col) == 0)
+		{
+			printf("It's a draw!\n");
+			break;
+		}
+		else if (Judegame(borad, row, col) == 3)
+		{
+			printf("Computer wins!\n");
+			break;
+		}
+		Computertern(borad, row, col);
+		if (Judegame(borad, row, col) == 1)
+		{
+			printf("Player wins!\n");
+			break;
+		}
+		else if (Judegame(borad, row, col) == 0)
+		{
+			printf("It's a draw!\n");
+			break;
+		}
+		else if (Judegame(borad, row, col) == 3)
+		{
+			printf("Computer wins!\n");
+			break;
+		}
+	}
+	
 
 }
 
@@ -29,7 +67,7 @@ void game(int row, int col)
 
 int main()
 {
-	
+	srand((unsigned int)time(NULL));
 	int input = 0;
 	int row = ROW;
 	int col = COL;
